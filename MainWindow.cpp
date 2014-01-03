@@ -1,5 +1,6 @@
 #include "MainWindow.h"
 #include "ui_MainWindow.h"
+#include <QFileDialog>
 
 #include "QuestionWidget.h"
 
@@ -8,25 +9,27 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
-    // Test
-    std::vector<std::string> options;
-
-    options.push_back("Sí");
-    options.push_back("No");
-
-    Question* question;
-
-    question = new Question("¿Esto se ve?", options, 1);
-    QuestionWidget* widget;
-
-    widget = new QuestionWidget(*question, this);
-
-    this->ui->mainLayout->addWidget(widget);
-    // ---
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::on_actionOpen_triggered()
+{
+    QString filePath;
+
+    filePath = QFileDialog::getOpenFileName(this,"Select the test file", NULL, "Test (*.json)");
+
+    if (filePath.isEmpty() == false)
+    {
+        this->testWidget = new TestWidget(filePath, this);
+        this->ui->mainLayout->addWidget(this->testWidget);
+    }
+}
+
+void MainWindow::updateTestView()
+{
+
 }

@@ -38,5 +38,5 @@ QuestionWidget::~QuestionWidget()
 
 void QuestionWidget::checkSolution()
 {
-    qDebug("Button pressed");
+
 }

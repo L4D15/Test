@@ -18,11 +18,14 @@ Test::Test(QString &filePath)
 
     QJsonDocument jsonDocument;
 
-    jsonDocument.fromJson(jsonText.toUtf8());
+    jsonDocument = QJsonDocument::fromJson(jsonText.toUtf8());
 
     QJsonArray jsonQuestions;
+    QJsonObject root;
 
-    jsonQuestions = jsonDocument.object()["questions"].toArray();
+    root = jsonDocument.object();
+
+    jsonQuestions = root["questions"].toArray();
 
     Question* question;
     for (int index = 0; index < jsonQuestions.size(); ++index)
