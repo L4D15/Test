@@ -15,11 +15,13 @@ TEMPLATE = app
 SOURCES += main.cpp\
         MainWindow.cpp \
     Question.cpp \
-    QuestionWidget.cpp
+    QuestionWidget.cpp \
+    Test.cpp
 
 HEADERS  += MainWindow.h \
     Question.h \
-    QuestionWidget.h
+    QuestionWidget.h \
+    Test.h
 
 FORMS    += MainWindow.ui \
     QuestionWidget.ui
