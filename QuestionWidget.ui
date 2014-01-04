@@ -20,17 +20,23 @@
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">QWidget#QuestionWidget {
-	border-radius: 5px;
-	background-color: #fff;
-}
-
-QFrame#answersFrame {
+   <string notr="true">QFrame#answersFrame {
 	border: none;
-	border-top: 1px dashed #aaa;
 }</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
+   <property name="leftMargin">
+    <number>3</number>
+   </property>
+   <property name="topMargin">
+    <number>3</number>
+   </property>
+   <property name="rightMargin">
+    <number>3</number>
+   </property>
+   <property name="bottomMargin">
+    <number>3</number>
+   </property>
    <item row="1" column="0">
     <widget class="QFrame" name="answersFrame">
      <property name="sizePolicy">
@@ -48,6 +54,12 @@ QFrame#answersFrame {
      <layout class="QFormLayout" name="answersLayout">
       <property name="fieldGrowthPolicy">
        <enum>QFormLayout::FieldsStayAtSizeHint</enum>
+      </property>
+      <property name="labelAlignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+      </property>
+      <property name="formAlignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
       </property>
      </layout>
     </widget>

@@ -26,7 +26,7 @@ public:
     ~QuestionWidget();
 
 private slots:
-    void checkSolution();
+    void checkSolution(int buttonId);
 
 private:
     Ui::QuestionWidget *ui;

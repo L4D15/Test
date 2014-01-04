@@ -8,16 +8,16 @@ class Question
 {    
 public:
     Question();
-    Question(std::string description, std::vector<std::string>& options, unsigned int response);
+    Question(std::string description, std::vector<std::string>& options, unsigned int solution);
     Question(const Question& other);
     ~Question();
 
-    inline bool isCorrect(unsigned int index) { return index == response; }
+    inline bool isCorrect(unsigned int index) { return index == solution; }
 
 public:
     std::string description;
     std::vector<std::string> options;
-    unsigned int response;
+    unsigned int solution;
 };
 
 #endif // QUESTION_H

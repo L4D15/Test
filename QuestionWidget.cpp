@@ -11,7 +11,7 @@ QuestionWidget::QuestionWidget(Question &question, QWidget *parent) :
     // Setup UI elements with question data
     this->buttonGroup = new QButtonGroup(this);
 
-    connect(this->buttonGroup, SIGNAL(buttonClicked(int)), this, SLOT(checkSolution()));
+    connect(this->buttonGroup, SIGNAL(buttonClicked(int)), this, SLOT(checkSolution(int)));
 
     this->ui->descriptionLabel->setText(QString(this->question.description.c_str()));
 
@@ -28,7 +28,6 @@ QuestionWidget::QuestionWidget(Question &question, QWidget *parent) :
         this->ui->answersLayout->addRow(this->answersWidgets[i].radioButton, widget.text);
         this->buttonGroup->addButton(this->answersWidgets[i].radioButton);
     }
-
 }
 
 QuestionWidget::~QuestionWidget()
@@ -36,7 +35,15 @@ QuestionWidget::~QuestionWidget()
     delete ui;
 }
 
-void QuestionWidget::checkSolution()
+void QuestionWidget::checkSolution(int buttonId)
 {
-
+    // If the button clicked is the same as the solution
+    if (this->buttonGroup->button(buttonId) == this->answersWidgets[this->question.solution - 1].radioButton)
+    {
+        this->ui->solutionLabel->setText("<span style='color:#00b7a4'>Correct!</span>");
+    }
+    else
+    {
+        this->ui->solutionLabel->setText("<span style='color:#ff0000'>Incorrect!</span>");
+    }
 }
