@@ -1,0 +1,35 @@
+{
+	"questions": 
+	[
+		{
+			"description" : "Are you confident about how much have you studied?",
+			"options" :
+			[
+				"Yes",
+				"No",
+				"I'm not sure",
+				"I'll put it to test with this App!"
+			],
+			"solution" : 4
+		},
+		{
+			"description" : "Will you recommend this App to your friends?",
+			"options" : 
+			[
+				"Absolutelly",
+				"No, I want them to fail the final exam! <b>Muahahahaha</b>"
+			],
+			"solution" : 1 
+		},
+		{
+			"description" : "What will you do if you find any bugs or have an awesome idea you'll love to see in this App?",
+			"options" : 
+			[
+				"I will just stop using the App",
+				"This app should have no bugs, I want my money back!",
+				"I will fork the repository, fix the bugs or implement new things and pull a request to you! <3"
+			],
+			"solution" : 3
+		}
+	]
+}
