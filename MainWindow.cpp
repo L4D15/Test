@@ -24,6 +24,12 @@ void MainWindow::on_actionOpen_triggered()
 
     if (filePath.isEmpty() == false)
     {
+        // Check if another test is already showing
+        if (this->testWidget != NULL)
+        {
+            delete this->testWidget;
+        }
+
         // Remove widgets
         this->ui->mainLayout->removeWidget(this->ui->subtitleLabel);
         this->ui->subtitleLabel->hide();

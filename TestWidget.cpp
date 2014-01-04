@@ -12,11 +12,19 @@ TestWidget::TestWidget(QString testFilePath, QWidget *parent) :
     // Add question widgets to the ui
     for (int index = 0; index < this->test.questions.size(); ++index)
     {
-        this->ui->mainLayout->addWidget(new QuestionWidget(this->test.questions[index], this));
+        this->questionWidgets.push_back(new QuestionWidget(this->test.questions[index], this));
+        this->ui->mainLayout->addWidget(this->questionWidgets[index]);
     }
 }
 
 TestWidget::~TestWidget()
 {
+    for (int index = 0; index < this->questionWidgets.size(); ++index)
+    {
+        delete this->questionWidgets[index];
+    }
+
+    this->questionWidgets.clear();
+
     delete ui;
 }

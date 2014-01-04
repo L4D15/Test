@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include "Test.h"
+#include "QuestionWidget.h"
 
 namespace Ui {
 class TestWidget;
@@ -19,6 +20,7 @@ public:
 private:
     Ui::TestWidget *ui;
     Test test;
+    QVector<QuestionWidget*> questionWidgets;
 };
 
 #endif // TESTWIDGET_H
