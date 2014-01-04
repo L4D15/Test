@@ -1,12 +1,34 @@
 #include "QuestionWidget.h"
 #include "ui_QuestionWidget.h"
 
+// --- Static variables ---
+QString QuestionWidget::correctStyle("QLabel#solutionLabel {"
+                                     "border: 1px solid #ccc;"
+                                     "border-radius: 5px;"
+                                     "background-color: #008500;"
+                                     "color: #fff;"
+                                     "padding: 3px;"
+                                 "}");
+QString QuestionWidget::incorrectStyle("QLabel#solutionLabel {"
+                                       "border: 1px solid #ccc;"
+                                       "border-radius: 5px;"
+                                       "background-color: #a60800;"
+                                       "color: #fff;"
+                                       "padding: 3px;"
+                                   "}");
+// ---
+
 QuestionWidget::QuestionWidget(Question &question, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::QuestionWidget),
     question(question)
 {
     ui->setupUi(this);
+
+    // Solution check box is hiden at first
+    this->ui->solutionLabel->hide();
+
+    this->correct = false;
 
     // Setup UI elements with question data
     this->buttonGroup = new QButtonGroup(this);
@@ -40,10 +62,18 @@ void QuestionWidget::checkSolution(int buttonId)
     // If the button clicked is the same as the solution
     if (this->buttonGroup->button(buttonId) == this->answersWidgets[this->question.solution - 1].radioButton)
     {
-        this->ui->solutionLabel->setText("<span style='color:#00b7a4'>Correct!</span>");
+        this->ui->solutionLabel->setStyleSheet(correctStyle);
+        this->ui->solutionLabel->setText("Correct");
+        this->correct = true;
     }
     else
     {
-        this->ui->solutionLabel->setText("<span style='color:#ff0000'>Incorrect!</span>");
+        this->ui->solutionLabel->setStyleSheet(incorrectStyle);
+        this->ui->solutionLabel->setText("Incorrect");
+        this->correct = false;
     }
+
+    this->ui->solutionLabel->show();
+
+    emit solutionChanged();
 }

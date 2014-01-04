@@ -17,6 +17,14 @@ public:
     explicit TestWidget(QString testFilePath, QWidget *parent = 0);
     ~TestWidget();
 
+    QString getTestResults();
+
+private slots:
+    void questionSolutionChanged();
+
+signals:
+    void testResultsMustBeUpdate();
+
 private:
     Ui::TestWidget *ui;
     Test test;
