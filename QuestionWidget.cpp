@@ -44,6 +44,8 @@ QuestionWidget::QuestionWidget(Question &question, QWidget *parent) :
 
         widget.radioButton = new QRadioButton(this);
         widget.text = new QLabel(QString(this->question.options[i].c_str()), this);
+        widget.text->setWordWrap(true);
+        widget.text->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
 
         this->answersWidgets.push_back(widget);
 
