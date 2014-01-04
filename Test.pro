@@ -28,3 +28,6 @@ HEADERS  += MainWindow.h \
 FORMS    += MainWindow.ui \
     QuestionWidget.ui \
     TestWidget.ui
+
+RESOURCES += \
+    Resources.qrc
